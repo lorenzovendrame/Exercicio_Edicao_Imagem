@@ -12,9 +12,10 @@ public class Main {
             System.out.println("==============================");
             System.out.println("| Options :                  |");
             System.out.println("|      1. Insert Actions     |");
-            System.out.println("|      2. Remove Actions     |");
-            System.out.println("|      3. Print All Actions  |");
-            System.out.println("|      4. Exit               |");
+            System.out.println("|      2. Undo Actions       |");
+            System.out.println("|      3. Redo Actions       |");
+            System.out.println("|      4. Print All Actions  |");
+            System.out.println("|      5. Exit               |");
             System.out.println("==============================");
 
             Scanner scanner = new Scanner(System.in);
@@ -29,16 +30,23 @@ public class Main {
                     userActionManagement.insertUserActionList(userAction);
                     break;
                 case 2:
-                    if (userActionManagement.doubleLinkedList != null && userActionManagement.doubleLinkedList.last() != null) {
-                        userActionManagement.removeUserActionList();
+                    if (userActionManagement.doubleLinkedListMain != null && userActionManagement.doubleLinkedListMain.last() != null) {
+                        userActionManagement.UndoUserActionList();
                     } else {
                         System.out.println("No actions to be removed!");
                     }
                     break;
                 case 3:
-                    userActionManagement.printUserActions();
+                    if (userActionManagement.doubleLinkedListUndo != null && userActionManagement.doubleLinkedListUndo.last() != null) {
+                        userActionManagement.redoUserActionList();
+                    } else {
+                        System.out.println("No actions to be redone!");
+                    }
                     break;
                 case 4:
+                    userActionManagement.printUserActions();
+                    break;
+                case 5:
                     System.exit(0);
                     break;
                 default:

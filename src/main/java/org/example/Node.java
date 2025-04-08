@@ -10,4 +10,8 @@ public class Node {
         this.next = null;
         this.previous = null;
     }
+
+    public UserAction getUserAction() {
+        return userAction;
+    }
 }

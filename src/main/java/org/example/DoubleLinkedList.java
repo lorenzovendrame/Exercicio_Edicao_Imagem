@@ -25,18 +25,19 @@ public class DoubleLinkedList {
         return last;
     }
 
-    public void removeAtLast() {
-        if (last == null) {
-            System.out.println("No actions to be removed");
+    public UserAction removeAtFirst() {
+        if (first == null) {
+            return null;
         } else {
-            System.out.println("Undo action: \n" + last.userAction.toString());
-            if (last.userAction == first.userAction) {
+            Node removedNode = first;
+            if (first == last) {
                 first = null;
+                last = null;
+            } else {
+                first = first.next;
+                first.previous = null;
             }
-            last = last.previous;
-            if (last != null) {
-                last.next = null;
-            }
+            return removedNode.getUserAction();
         }
     }
 
