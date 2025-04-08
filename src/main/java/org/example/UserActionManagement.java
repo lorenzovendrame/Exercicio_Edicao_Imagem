@@ -24,20 +24,20 @@ public class UserActionManagement {
     public void UndoUserActionList(){
         UserAction removedUserAction = doubleLinkedListMain.removeAtFirst();
         doubleLinkedListUndo.insertAtFirst(removedUserAction);
-        System.out.println("UserAction removed: " + removedUserAction.toString());
+        System.out.println("Ação de Usuário Desfeita: " + removedUserAction.toString());
     }
 
     public void redoUserActionList(){
         UserAction redoneUserAction = doubleLinkedListUndo.removeAtFirst();
         doubleLinkedListMain.insertAtFirst(redoneUserAction);
-        System.out.println("UserAction redone: " + redoneUserAction.toString());
+        System.out.println("Ação de Usuário Refeita: " + redoneUserAction.toString());
     }
 
     public void printUserActions(){
         if (doubleLinkedListMain != null && doubleLinkedListMain.first != null){
             doubleLinkedListMain.printUserActions();
         } else {
-            System.out.println("No actions found!");
+            System.out.println("Ações de Usuário não encontradas!");
         }
     }
 }

@@ -7,24 +7,24 @@ public class Main {
         UserActionManagement userActionManagement = new UserActionManagement();
         while (true){
 
-            System.out.println("==============================");
-            System.out.println("|   User Action Management   |");
-            System.out.println("==============================");
-            System.out.println("| Options :                  |");
-            System.out.println("|      1. Insert Actions     |");
-            System.out.println("|      2. Undo Actions       |");
-            System.out.println("|      3. Redo Actions       |");
-            System.out.println("|      4. Print All Actions  |");
-            System.out.println("|      5. Exit               |");
-            System.out.println("==============================");
+            System.out.println("=========================================");
+            System.out.println("|   Gerenciamento de Ações do Usuário   |");
+            System.out.println("=========================================");
+            System.out.println("| Opções :                              |");
+            System.out.println("|      1. Inserir Ações                 |");
+            System.out.println("|      2. Desfazer Ações                |");
+            System.out.println("|      3. Refazer Ações                 |");
+            System.out.println("|      4. Mostrar Todas as Ações        |");
+            System.out.println("|      5. Sair                          |");
+            System.out.println("=========================================");
 
             Scanner scanner = new Scanner(System.in);
             switch (scanner.nextInt()) {
                 case 1:
                     Scanner userActionDescriptionScan = new Scanner(System.in);
-                    System.out.println("Enter User Action Description: ");
+                    System.out.println("Insira a descrição da Ação do Usuário: ");
                     String userActionDescription = userActionDescriptionScan.nextLine();
-                    System.out.println("Enter ID of resulting image: ");
+                    System.out.println("Insira o ID da Imagem Resultante: ");
                     int imageId = userActionDescriptionScan.nextInt();
                     UserAction userAction = new UserAction(userActionManagement.autoIncrementUserActionId, userActionDescription, imageId);
                     userActionManagement.insertUserActionList(userAction);
@@ -33,14 +33,14 @@ public class Main {
                     if (userActionManagement.doubleLinkedListMain != null && userActionManagement.doubleLinkedListMain.last() != null) {
                         userActionManagement.UndoUserActionList();
                     } else {
-                        System.out.println("No actions to be removed!");
+                        System.out.println("Sem ações para serem desfeitas!");
                     }
                     break;
                 case 3:
                     if (userActionManagement.doubleLinkedListUndo != null && userActionManagement.doubleLinkedListUndo.last() != null) {
                         userActionManagement.redoUserActionList();
                     } else {
-                        System.out.println("No actions to be redone!");
+                        System.out.println("Sem ações para serem refeitas!");
                     }
                     break;
                 case 4:
@@ -50,7 +50,7 @@ public class Main {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Enter a valid option!");
+                    System.out.println("Escolha uma opção válida!");
                     break;
             }
         }
